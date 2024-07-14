@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Rooms Available</h1>
+<form id="filter-form">
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location">
+    <label for="beds">Number of Beds:</label>
+    <input type="number" id="beds" name="beds">
+    <button type="submit">Filter</button>
+</form>
+<div id="rooms-container">
+    {% for room in rooms %}
+    <div class="room-card">
+        <h2>{{ room.name }}</h2>
+        <p>Location: {{ room.location }}</p>
+        <p>Beds: {{ room.beds }}</p>
+        <p>Price: {{ room.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+<h2>Facilities Provided</h2>
+<ul>
+    <li>24/7 Security</li>
+    <li>Wi-Fi</li>
+    <li>Laundry Service</li>
+    <li>Housekeeping</li>
+</ul>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+{% endblock %}
