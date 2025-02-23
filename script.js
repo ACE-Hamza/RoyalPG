@@ -4,12 +4,10 @@ const residencies = [
         name: "Royal PG - A",
         address: "Chattrapati Shivaji Marg, Block D, JJ Colony, Uttam Nagar, New Delhi, Delhi-110059",
         mapUrl: "https://www.google.com/maps?q=28.62335968017578,77.06591033935547&z=17&hl=en",
-        thumbnail: "static/location_1.jpeg",
+        thumbnail: "static/location_1.png",
         images: [
-            "static/location_1.jpeg",
-            "static/location_1_bedroom.jpeg",
-            "static/location_1_bedroom_wall.jpeg",
-            "static/location_1_washroom.jpeg"
+            "static/location_1.png",
+            "static/location_1_room.jpeg"
         ],
     },
     {
@@ -26,6 +24,19 @@ const residencies = [
             "static/location_2_kitchen.jpeg"
         ],
     },
+    {
+        id: 3,
+        name: "Royal PG - C",
+        address: "Chattrapati Shivaji Marg, Block D, JJ Colony, Uttam Nagar, New Delhi, Delhi-110059",
+        mapUrl: "https://www.google.com/maps?q=28.62335968017578,77.06591033935547&z=17&hl=en",
+        thumbnail: "static/location_3.jpeg",
+        images: [
+            "static/location_3.jpeg",
+            "static/location_3_bedroom.jpeg",
+            "static/location_3_bedroom_wall.jpeg",
+            "static/location_3_washroom.jpeg"
+        ],
+    }
 ];
 
 const cardsContainer = document.getElementById("cards");
@@ -64,11 +75,18 @@ function renderCards() {
 }
 
 function openModal() {
-    document.body.classList.add("no-scroll"); 
+    document.body.classList.add("no-scroll");
     if (currentResidency) {
         modalTitle.textContent = currentResidency.name;
-        modalImage.src = currentResidency.images[currentImageIndex];
-        modal.classList.remove("hidden");
+
+        // Preload the image first
+        const img = new Image();
+        img.src = currentResidency.images[currentImageIndex];
+        img.onload = function() {
+            // Once the image is loaded, set it as the modal's image
+            modalImage.src = img.src;
+            modal.classList.remove("hidden");
+        };
     }
 }
 
