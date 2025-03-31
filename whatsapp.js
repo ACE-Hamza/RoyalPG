@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create QR Code Popup
     const qrPopup = document.createElement("div");
     qrPopup.id = "qr-popup";
-    qrPopup.innerHTML = `<img id="whatsapp-qr" src="" alt="Scan QR Code" width="150">`;
+    qrPopup.innerHTML = `<p style="width: 150px; text-align: center; margin-top: 0; margin-bottom: 5px;">Scan to open Whatsapp</p><img id="whatsapp-qr" src="" alt="Scan QR Code" width="150">`;
     document.body.appendChild(qrPopup);
   
     const qrImage = document.getElementById("whatsapp-qr");
