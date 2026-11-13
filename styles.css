@@ -634,5 +634,28 @@ body {
     outline-offset: 3px;
 }
 
+.residency-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.copy-address-btn {
+    padding: 8px 14px;
+    background: #f3eee8;
+    color: #967858;
+    border: 1px solid #e5d9ca;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.copy-address-btn:hover {
+    background: #e9dfd3;
+    transform: translateY(-2px);
+}
 
   

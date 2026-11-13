@@ -60,9 +60,38 @@ function renderCards() {
             <div class="card-content">
                 <h2>${residency.name}</h2>
                 <p>${residency.address}</p>
-                <a href="${residency.mapUrl}" target="_blank">View on Google Maps</a>
+
+                <div class="residency-actions">
+                    <a href="${residency.mapUrl}" target="_blank" rel="noopener noreferrer">
+                        View on Google Maps
+                    </a>
+
+                    <button class="copy-address-btn" type="button">
+                        Copy Address
+                    </button>
+                </div>
             </div>
         `;
+
+        const copyButton = card.querySelector(".copy-address-btn");
+
+        copyButton.addEventListener("click", async (event) => {
+            event.stopPropagation();
+
+            try {
+                await navigator.clipboard.writeText(residency.address);
+
+                copyButton.textContent = "Copied!";
+
+                setTimeout(() => {
+                    copyButton.textContent = "Copy Address";
+                }, 2000);
+
+            } catch (error) {
+                console.error("Unable to copy address:", error);
+                copyButton.textContent = "Copy failed";
+            }
+        });
 
         card.addEventListener("click", () => {
             currentResidency = residency;
