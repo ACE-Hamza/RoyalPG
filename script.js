@@ -54,26 +54,59 @@ function renderCards() {
     residencies.forEach((residency) => {
         const card = document.createElement("div");
         card.className = "card";
-
+  
         card.innerHTML = `
             <img src="${residency.thumbnail}" alt="${residency.name}" class="residency-image" />
+
             <div class="card-content">
                 <h2>${residency.name}</h2>
                 <p>${residency.address}</p>
 
                 <div class="residency-actions">
-                    <a href="${residency.mapUrl}" target="_blank" rel="noopener noreferrer">
-                        View on Google Maps
+
+                    <a href="${residency.mapUrl}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="map-button">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="18" height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                            <circle cx="12" cy="10" r="2.5"/>
+                        </svg>
+
+                        <span>View on Google Maps</span>
                     </a>
 
                     <button class="copy-address-btn" type="button">
-                        Copy Address
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="17" height="17"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="8" y="8" width="13" height="13" rx="2"/>
+                            <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                        </svg>
+
+                        <span>Copy Address</span>
                     </button>
+
                 </div>
             </div>
         `;
-
+ 
         const copyButton = card.querySelector(".copy-address-btn");
+        const copyButtonText = copyButton.querySelector("span");
 
         copyButton.addEventListener("click", async (event) => {
             event.stopPropagation();
@@ -81,17 +114,23 @@ function renderCards() {
             try {
                 await navigator.clipboard.writeText(residency.address);
 
-                copyButton.textContent = "Copied!";
+                copyButtonText.textContent = "Copied!";
 
                 setTimeout(() => {
-                    copyButton.textContent = "Copy Address";
+                    copyButtonText.textContent = "Copy Address";
                 }, 2000);
 
             } catch (error) {
                 console.error("Unable to copy address:", error);
-                copyButton.textContent = "Copy failed";
+                copyButtonText.textContent = "Copy failed";
             }
         });
+
+        // Prevent Maps click from opening the image gallery
+        card.querySelector(".map-button").addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
+
 
         card.addEventListener("click", () => {
             currentResidency = residency;

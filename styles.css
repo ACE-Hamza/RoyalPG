@@ -690,3 +690,95 @@ body {
 .navbar-links .home-link:hover svg {
     transform: translateY(-1px);
 }
+
+
+/* Residency Action Buttons */
+.residency-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* Google Maps - Primary Button */
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 15px;
+
+    background: #967858;
+    color: white !important;
+
+    border: 1px solid #967858;
+    border-radius: 7px;
+
+    font-size: 14px !important;
+    font-weight: 500;
+    text-decoration: none !important;
+
+    transition: all 0.2s ease;
+}
+
+.map-button:hover {
+    background: #806344;
+    border-color: #806344;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* Copy Address - Secondary Button */
+.copy-address-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 15px;
+
+    background: #f3eee8;
+    color: #967858;
+
+    border: 1px solid #e5d9ca;
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.copy-address-btn:hover {
+    background: #e9dfd3;
+    border-color: #d5c2ad;
+    transform: translateY(-2px);
+}
+
+/* Icon alignment */
+.map-button svg,
+.copy-address-btn svg {
+    flex-shrink: 0;
+}
+
+/* Accessibility */
+.map-button:focus-visible,
+.copy-address-btn:focus-visible {
+    outline: 2px solid #967858;
+    outline-offset: 3px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .residency-actions {
+        gap: 10px;
+    }
+
+    .map-button,
+    .copy-address-btn {
+        padding: 9px 12px;
+        font-size: 13px !important;
+    }
+}
