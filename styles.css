@@ -658,4 +658,35 @@ body {
     transform: translateY(-2px);
 }
 
-  
+/* Navbar Home Link */
+.navbar-links .home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 16px;
+    padding: 9px 13px;
+    border-radius: 7px;
+
+    transition: all 0.25s ease;
+}
+
+/* Royal PG Theme Hover */
+.navbar-links .home-link:hover {
+    background-color: #967858;
+    color: #ffffff;
+    border-radius: 7px;
+}
+
+/* Smooth icon transition */
+.navbar-links .home-link svg {
+    transition: transform 0.25s ease;
+}
+
+.navbar-links .home-link:hover svg {
+    transform: translateY(-1px);
+}
