@@ -1,3 +1,13 @@
+// Navbar Toggle - Works on both pages
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbarLinks = document.getElementById('navbar-links');
+
+if (navbarToggle && navbarLinks) {
+    navbarToggle.addEventListener('click', function () {
+        navbarLinks.classList.toggle('show');
+    });
+}
+
 const residencies = [
     {
         id: 1,
@@ -232,11 +242,6 @@ modal.addEventListener("touchend", function (event) {
 
 // Initialize cards on page load
 renderCards();
-
-document.getElementById('navbar-toggle').addEventListener('click', function () {
-    const navbarLinks = document.getElementById('navbar-links');
-    navbarLinks.classList.toggle('show');
-});
 
 // Keyboard Navigation
 document.addEventListener("keydown", function (event) {
