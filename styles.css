@@ -868,6 +868,8 @@ body {
     .navbar-links li a:active {
         background-color: #967858;
         color: #ffffff;
+        transform: scale(0.97);
+        transition: background-color 0.08s ease, transform 0.08s ease;
     }
 }
 
