@@ -784,11 +784,13 @@ body {
 }
 
 
-/* Improved Mobile Navigation Menu */
+
+/* Animated Mobile Navigation */
 @media (max-width: 768px) {
 
     .navbar {
         position: relative;
+        z-index: 1000;
     }
 
     .navbar-links {
@@ -797,22 +799,39 @@ body {
         left: 0;
         right: 0;
 
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 0;
 
         margin: 0;
-        padding: 6px 18px 10px;
+        padding: 0 18px;
 
-        background: rgba(25, 24, 22, 0.97);
+        background: rgba(25, 24, 22, 0.98);
         border-top: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 
-        z-index: 1000;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+        transform-origin: top;
+
+        transition:
+            max-height 0.4s ease,
+            opacity 0.3s ease,
+            transform 0.35s ease,
+            visibility 0.4s;
     }
 
     .navbar-links.show {
-        display: flex;
+        max-height: 300px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        padding-top: 6px;
+        padding-bottom: 10px;
     }
 
     .navbar-links li {
@@ -841,11 +860,24 @@ body {
         font-weight: 500;
         text-decoration: none;
 
-        transition: background 0.2s ease, color 0.2s ease;
+        transition: background-color 0.15s ease, color 0.15s ease;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .navbar-links li a:hover {
-        background: rgba(150, 120, 88, 0.25);
-        color: #d9bd9c;
+    /* Brief feedback when a menu item is tapped */
+    .navbar-links li a:active {
+        background-color: #967858;
+        color: #ffffff;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-links {
+        transition: none !important;
+    }
+
+    .navbar-links li a {
+        transition: none !important;
     }
 }
