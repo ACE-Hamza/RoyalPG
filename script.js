@@ -3,10 +3,20 @@ const navbarToggle = document.getElementById('navbar-toggle');
 const navbarLinks = document.getElementById('navbar-links');
 
 if (navbarToggle && navbarLinks) {
+
+    // Open / Close menu on hamburger click
     navbarToggle.addEventListener('click', function () {
         navbarLinks.classList.toggle('show');
     });
+
+    // Close menu when a navigation link is clicked
+    navbarLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function () {
+            navbarLinks.classList.remove('show');
+        });
+    });
 }
+
 
 const residencies = [
     {
